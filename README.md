@@ -56,7 +56,7 @@ public CreateNewCustomerSuccessfully()
 
 This is quite tedious to write and if you need to change the service's dependencies, you'll have a lot of test cases to change.
 
-Automoqer removes this boilerplate for you by automatically creates a Service with its constructor parameters as Moq-objects:
+Automoqer removes this boilerplate for you by automatically create a Service with its constructor parameters as Moq-objects:
 
 ```
 [Fact]
@@ -75,4 +75,23 @@ public CreateNewCustomerSuccessfully()
 }
 ```
 
-It also runs VerifyAll() on all Moq-objects in it's Dispose-method (hence the IDispose-pattern)
+It also runs VerifyAll() on all Moq-objects in its Dispose-method (hence the IDisposable-pattern)
+
+
+## How to use ##
+
+This is how you create the Automoqer and access the service-instance as well as its dependencies:
+
+```
+using (var serviceMocker = new AutoMoqer<ServiceToCreate>())
+{	
+	//Example definition of a dependency mock setup:
+	serviceMocker.Param<ICustomerRepository>().Setup(m => m.FindCustomer(It.Is<int>(p => p == 1))).Returns(new Customer());
+
+	//Access the service instance:
+	var service = serviceMocker.Service;
+
+	//Example verification of a method call
+	serviceMocker.Param<ILogger>().Verify(m => m.Log(It.IsAny<string>));
+}
+```
