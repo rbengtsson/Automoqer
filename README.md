@@ -6,7 +6,7 @@ https://www.nuget.org/packages/Automoqer/
 
 The purpose of Automoqer is to ease the creation of services with constructor IoC in unit testing.
 
-If your services look like this:
+If your services are defined like this:
 
 ```
 public class CustomerService 
@@ -18,8 +18,7 @@ public class CustomerService
 	public CustomerService(
 		ILogger logger,
 		IUnitOfWork unitOfWork,
-		IAnotherDependency anotherDependency
-	
+		IAnotherDependency anotherDependency	
 	) 
 	{
 		_logger = logger;
@@ -41,7 +40,7 @@ public CreateNewCustomerSuccessfully()
 	var unitOfWorkMock = new Mock<IUnitOfWork>();
 	var anotherDependencyMock = new Mock<IAnotherDependency>();
 
-	//Your Moq Setup are defined here..
+	//Your Moq .Setup are defined here..
 
 	var service = new CustomerService(
 		loggerMock.Object,
@@ -51,7 +50,7 @@ public CreateNewCustomerSuccessfully()
 
 	//Actual test-case goes here...
 
-	//Your Moq Verify are defined here...
+	//Your Moq .Verify are defined here...
 }
 ```
 
@@ -65,13 +64,13 @@ public CreateNewCustomerSuccessfully()
 {
     using (var serviceMocker = new AutoMoqer<CustomerService>())
     {
-		//Your Moq Setup are defined here..
+		//Your Moq .Setup are defined here..
 		//Mocks accessed by serviceMocker.Param<ILogger>().Setup(...
 
 		//Actual test-case goes here...
 		//Service accessed by serviceMocker.Service
 
-		//Your Moq Verify are defined here...
+		//Your Moq .Verify are defined here...
 	}	
 }
 ```
