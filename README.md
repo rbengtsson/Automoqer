@@ -65,8 +65,10 @@ public CreateNewCustomerSuccessfully()
     using (var serviceMocker = new AutoMoqer<CustomerService>())
     {
 		//Your Moq Setup are defined here..
+		//Mocks accessed by serviceMocker.Param<ILogger>().Setup(...
 
 		//Actual test-case goes here...
+		//Service accessed by serviceMocker.Service
 
 		//Your Moq Verify are defined here...
 	}	
