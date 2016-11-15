@@ -8,7 +8,7 @@ The purpose of Automoqer is to ease the creation of services with constructor Io
 
 If your services are defined like this:
 
-```
+```csharp
 public class CustomerService 
 {
 	private readonly ILogger _logger;
@@ -32,7 +32,7 @@ public class CustomerService
 
 Then chances are that you have a lot of unit tests that looks like this:
 
-```
+```csharp
 [Fact]
 public CreateNewCustomerSuccessfully()
 {
@@ -58,7 +58,7 @@ This is quite tedious to write and if you need to change the service's dependenc
 
 Automoqer removes this boilerplate for you by automatically create a Service with its constructor parameters as Moq-objects:
 
-```
+```csharp
 [Fact]
 public CreateNewCustomerSuccessfully()
 {
@@ -82,7 +82,7 @@ It also runs VerifyAll() on all Moq-objects in its Dispose-method (hence the IDi
 
 This is how you create the Automoqer and access the service-instance as well as its dependencies:
 
-```
+```csharp
 using (var serviceMocker = new AutoMoqer<ServiceToCreate>())
 {	
 	//Example definition of a dependency mock setup:
