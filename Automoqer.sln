@@ -7,6 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automoqer", "Automoqer\Auto
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{275D9F94-ACD9-4280-9793-6628560073B3}"
 	ProjectSection(SolutionItems) = preProject
+		build-and-publish.txt = build-and-publish.txt
 		todo.txt = todo.txt
 	EndProjectSection
 EndProject

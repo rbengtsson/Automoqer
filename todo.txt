@@ -1,1 +1,4 @@
 * Add override-parameters manually as constructor parameters (could be used for mapping or fakes)
+
+* Improve build process:
+	 https://github.com/smatsson/tusdotnet/blob/master/Tools/build_nuget.ps1

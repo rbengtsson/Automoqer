@@ -1,0 +1,20 @@
+Publish:
+
+	Prepare:
+		* Get Nuget CLI-tool: https://dist.nuget.org/index.html
+
+		* Place it one level up (e.g. C:\source\github\nuget.exe)
+
+	Publish:
+
+		* Increase version number in solution
+
+		* Build solution
+
+		* Open command line to nuget cli path (e.g. C:\source\github\)
+
+		* nuget.exe pack .\Automoqer\Automoqer\Automoqer.csproj -IncludeReferencedProjects  -Prop Configuration=Release -Build -MSBuildVersion 14
+
+		* Login to https://www.nuget.org/
+
+		* Upload package
