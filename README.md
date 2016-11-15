@@ -60,6 +60,7 @@ This is quite tedious to write and if you need to change the service's dependenc
 Automoqer removes this boilerplate for you by automatically creates a Service with its constructor parameters as Moq-objects:
 
 ```
+[Fact]
 public CreateNewCustomerSuccessfully()
 {
     using (var serviceMocker = new AutoMoqer<CustomerService>())
