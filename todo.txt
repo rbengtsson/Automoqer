@@ -3,6 +3,11 @@ Todo
 ----
 
 	* M - Unit tests
+		- with empty public constructor
+		- with multiple public constructors
+		- with no public constructor
+		- with primitive types in constructor
+		- can not resolve unknown parameter (should throw controlled exception)
 
 	* S - Manage multiple constructors
 	* S - Add override-parameters manually as constructor parameters (could be used for mapping or fakes)
