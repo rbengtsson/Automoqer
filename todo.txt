@@ -3,8 +3,6 @@ Todo
 ----
 
 	* M - Unit tests
-		- with empty public constructor
-		- with multiple public constructors
 		- with no public constructor
 		- with primitive types in constructor
 		- can not resolve unknown parameter (should throw controlled exception)

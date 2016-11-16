@@ -16,8 +16,10 @@ namespace Automoqer
         public AutoMoqer()
         {
             var constructors = typeof(T).GetConstructors(BindingFlags.Public | BindingFlags.Instance);
-            var primaryConstructor = constructors.SingleOrDefault();
+            if(constructors.Length > 1)
+                throw new ArgumentException("Multiple public constructors");
 
+            var primaryConstructor = constructors.SingleOrDefault();
             if (primaryConstructor == null)
                 throw new ArgumentException("Could not find a public constructor");
 
@@ -37,12 +39,20 @@ namespace Automoqer
             _serviceInstance = new Lazy<T>(() => (T)Activator.CreateInstance(typeof(T), _prameterMockInstances.Cast<object>().ToArray()));
         }
 
+        /// <summary>
+        /// Get constructor parameter Mock instance
+        /// </summary>
+        /// <typeparam name="TParam">Type of constructor parameter</typeparam>
+        /// <returns>A mock instance of type TParam, or null of no such parameter could be resolved</returns>
         public Mock<TParam> Param<TParam>() where TParam : class
         {
             var genericType = typeof(Mock<>);
             var genericGenericType = genericType.MakeGenericType(typeof(TParam));
 
             var param = _parameters.SingleOrDefault(p => p.GetType() == genericGenericType);
+            if (param == null)
+                return null;
+
             return (Mock<TParam>)Convert.ChangeType(param, typeof(Mock<TParam>));
         }
 

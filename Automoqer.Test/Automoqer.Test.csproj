@@ -56,7 +56,10 @@
   <ItemGroup>
     <Compile Include="AutoMoqerTest.cs" />
     <Compile Include="Model\CommonService.cs" />
+    <Compile Include="Model\ServiceWithNoConstructorParameters.cs" />
     <Compile Include="Model\Interfaces\ISimpleService.cs" />
+    <Compile Include="Model\ServiceWithMultipleConstructors.cs" />
+    <Compile Include="Model\ServiceWithNoPublicConstructor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
