@@ -60,6 +60,7 @@
     <Compile Include="Model\Interfaces\ISimpleService.cs" />
     <Compile Include="Model\ServiceWithMultipleConstructors.cs" />
     <Compile Include="Model\ServiceWithNoPublicConstructor.cs" />
+    <Compile Include="Model\ServiceWithValueTypeInConstructor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

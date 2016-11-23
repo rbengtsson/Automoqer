@@ -7,7 +7,7 @@ Publish:
 
 	Publish:
 
-		* Increase version number in solution
+		* Increase version number in main project's AssemblyInfo.cs
 
 		* Build solution
 

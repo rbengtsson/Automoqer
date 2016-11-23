@@ -2,13 +2,12 @@ Todo
 ----
 
 	* M - Unit tests
-		- with primitive types in constructor
 		- with override-parameters
 
-	* M - Handle primitive types as service parameters (no mock!)
+	* M - Handle value types as service parameters (no mock!)
 	* M - Add override-parameters manually as constructor parameters (could be used for mapping or fakes)
 
-	* S -
+	* S - Use xUnit instead of mstest
 
 	* C - Manage multiple constructors
 	* C - Improve build process: https://github.com/smatsson/tusdotnet/blob/master/Tools/build_nuget.ps1
