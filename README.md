@@ -8,7 +8,7 @@ The purpose of Automoqer is to ease the creation of services with constructor Io
 
 ## How to use ##
 
-1. Get Automoqer via NuGet: [![NuGet](https://img.shields.io/nuget/v/tusdotnet.svg)](https://www.nuget.org/packages/Automoqer/)
+1. Get Automoqer via NuGet: [![NuGet](https://img.shields.io/nuget/v/Automoqer.svg)](https://www.nuget.org/packages/Automoqer/)
 
 2. In your unit test, create the Automoqer like this:
 
