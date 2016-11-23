@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using Moq;
 
 namespace Automoqer
@@ -60,7 +61,15 @@ namespace Automoqer
 
         public void Dispose()
         {
-            foreach (var parameter in _parameters)
+			var exceptionOccurred = Marshal.GetExceptionPointers() != IntPtr.Zero
+						|| Marshal.GetExceptionCode() != 0;
+
+			if(exceptionOccurred)
+			{
+				return;
+			}
+
+			foreach (var parameter in _parameters)
             {
                 var method = parameter.GetType().GetMethod("VerifyAll");
                 method.Invoke(parameter, null);
