@@ -15,6 +15,8 @@ Publish:
 
 		* nuget.exe pack .\Automoqer\Automoqer\Automoqer.csproj -IncludeReferencedProjects  -Prop Configuration=Release -Build -MSBuildVersion 14
 
-		* Login to https://www.nuget.org/
+		* Login to NuGet: https://www.nuget.org/
 
 		* Upload package
+
+		* Create release in GitHub: https://github.com/rbengtsson/Automoqer/releases
