@@ -1,10 +1,32 @@
-This repository contains a nuget package called "Automoqer":
-https://www.nuget.org/packages/Automoqer/
+This repository contains a nuget package called "Automoqer": https://www.nuget.org/packages/Automoqer/
 
 
-## About ##
+# About Automoqer #
 
 The purpose of Automoqer is to ease the creation of services with constructor IoC in unit testing.
+
+
+## How to use ##
+
+1. Get Automoqer via NuGet: [![NuGet](https://img.shields.io/nuget/v/tusdotnet.svg)](https://www.nuget.org/packages/Automoqer/)
+
+2. In your unit test, create the Automoqer like this:
+
+```csharp
+using (var serviceMocker = new AutoMoqer<ServiceToCreate>())
+{	
+	//Example definition of a dependency mock setup:
+	serviceMocker.Param<ICustomerRepository>().Setup(m => m.FindCustomer(It.Is<int>(p => p == 1))).Returns(new Customer());
+
+	//Access the service instance:
+	var service = serviceMocker.Service;
+
+	//Example verification of a method call
+	serviceMocker.Param<ILogger>().Verify(m => m.Log(It.IsAny<string>));
+}
+```
+
+## Introduction ##
 
 If your services are defined like this:
 
@@ -78,20 +100,34 @@ public CreateNewCustomerSuccessfully()
 It also runs VerifyAll() on all Moq-objects in its Dispose-method (hence the IDisposable-pattern)
 
 
-## How to use ##
 
-This is how you create the Automoqer and access the service-instance as well as its dependencies:
+# Contributors #
 
-```csharp
-using (var serviceMocker = new AutoMoqer<ServiceToCreate>())
-{	
-	//Example definition of a dependency mock setup:
-	serviceMocker.Param<ICustomerRepository>().Setup(m => m.FindCustomer(It.Is<int>(p => p == 1))).Returns(new Customer());
+ * Robert Bengtsson - https://github.com/rbengtsson
+ * Stefan Matsson - https://github.com/smatsson
 
-	//Access the service instance:
-	var service = serviceMocker.Service;
 
-	//Example verification of a method call
-	serviceMocker.Param<ILogger>().Verify(m => m.Log(It.IsAny<string>));
-}
-```
+# License and usage
+
+MIT License
+
+Copyright (c) 2016 Robert Bengtsson
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+

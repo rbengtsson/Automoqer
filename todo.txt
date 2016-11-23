@@ -1,12 +1,14 @@
-
 Todo
 ----
 
 	* M - Unit tests
-		- with no public constructor
 		- with primitive types in constructor
-		- can not resolve unknown parameter (should throw controlled exception)
+		- with override-parameters
 
-	* S - Manage multiple constructors
-	* S - Add override-parameters manually as constructor parameters (could be used for mapping or fakes)
-	* S - Improve build process: https://github.com/smatsson/tusdotnet/blob/master/Tools/build_nuget.ps1
+	* M - Handle primitive types as service parameters (no mock!)
+	* M - Add override-parameters manually as constructor parameters (could be used for mapping or fakes)
+
+	* S -
+
+	* C - Manage multiple constructors
+	* C - Improve build process: https://github.com/smatsson/tusdotnet/blob/master/Tools/build_nuget.ps1
