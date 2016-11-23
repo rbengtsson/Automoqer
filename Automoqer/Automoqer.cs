@@ -27,6 +27,9 @@ namespace Automoqer
             var parameters = primaryConstructor.GetParameters();
             foreach (var parameter in parameters)
             {
+                if(parameter.ParameterType.IsValueType)
+                    throw new ArgumentException("Service constructor has an value type as parameter, not supported by Moq");
+
                 var genericType = typeof(Mock<>);
                 var genericGenericType = genericType.MakeGenericType(parameter.ParameterType);
                 var parameterInstance = Activator.CreateInstance(genericGenericType);

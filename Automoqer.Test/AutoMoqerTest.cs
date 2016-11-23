@@ -53,6 +53,13 @@ namespace Automoqer.Test
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
+        public void AutoMoqerCanNotBeCreatedWithValueTypeInConstructorThrowsException()
+        {
+            var automoqer = new AutoMoqer<ServiceWithValueTypeInConstructor>();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
         public void AutoMoqerCanNotBeCreatedWithNoPublicConstructorThrowsException()
         {
             var automoqer = new AutoMoqer<ServiceWithNoPublicConstructor>();
