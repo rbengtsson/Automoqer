@@ -13,7 +13,7 @@ The purpose of Automoqer is to ease the creation of services with constructor Io
 2. In your unit test, create the Automoqer like this:
 
 ```csharp
-using (var serviceMocker = new AutoMoqer<ServiceToCreate>())
+using (var serviceMocker = new AutoMoqer<ServiceToCreate>().Build())
 {	
 	//Example definition of a dependency mock setup:
 	serviceMocker.Param<ICustomerRepository>().Setup(m => m.FindCustomer(It.Is<int>(p => p == 1))).Returns(new Customer());
@@ -84,7 +84,7 @@ Automoqer removes this boilerplate for you by automatically create a Service wit
 [Fact]
 public CreateNewCustomerSuccessfully()
 {
-    using (var serviceMocker = new AutoMoqer<CustomerService>())
+    using (var serviceMocker = new AutoMoqer<CustomerService>().Build())
     {
 		//Your Moq .Setup are defined here..
 		//Mocks accessed by serviceMocker.Param<ILogger>().Setup(...
