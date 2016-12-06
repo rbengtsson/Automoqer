@@ -11,6 +11,8 @@ Publish:
 
 		* Build solution
 
+		* Run all tests
+
 		* Open command line to nuget cli path (e.g. C:\source\github\)
 
 		* nuget.exe pack .\Automoqer\Automoqer\Automoqer.csproj -IncludeReferencedProjects  -Prop Configuration=Release -Build -MSBuildVersion 14

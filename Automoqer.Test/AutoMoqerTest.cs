@@ -12,7 +12,7 @@ namespace Automoqer.Test
         [TestMethod]        
         public void AutoMoqerCanBeCreatedWithNormalConstructorSuccessfullt()
         {
-            var automoqer = new AutoMoqer<CommonService>();
+            var automoqer = new AutoMoqer<CommonService>().Build();
 
             //Assert result
             Assert.IsNotNull(automoqer);
@@ -30,7 +30,7 @@ namespace Automoqer.Test
         [TestMethod]
         public void AutoMoqerCanBeCreatedWithEmptyConstructor()
         {
-            var automoqer = new AutoMoqer<ServiceWithNoConstructorParameters>();
+            var automoqer = new AutoMoqer<ServiceWithNoConstructorParameters>().Build();
 
             //Assert result
             Assert.IsNotNull(automoqer);
@@ -48,21 +48,14 @@ namespace Automoqer.Test
         [ExpectedException(typeof(ArgumentException))]
         public void AutoMoqerCanNotBeCreatedWithMultiplePublicConstructorsThrowsException()
         {
-            var automoqer = new AutoMoqer<ServiceWithMultipleConstructors>();
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
-        public void AutoMoqerCanNotBeCreatedWithValueTypeInConstructorThrowsException()
-        {
-            var automoqer = new AutoMoqer<ServiceWithValueTypeInConstructor>();
+            var automoqer = new AutoMoqer<ServiceWithMultipleConstructors>().Build();
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void AutoMoqerCanNotBeCreatedWithNoPublicConstructorThrowsException()
         {
-            var automoqer = new AutoMoqer<ServiceWithNoPublicConstructor>();
+            var automoqer = new AutoMoqer<ServiceWithNoPublicConstructor>().Build();
         }
 
 		[TestMethod]
@@ -70,7 +63,7 @@ namespace Automoqer.Test
 		{
 			try
 			{
-				using(var automoqer = new AutoMoqer<CommonService>())
+				using(var automoqer = new AutoMoqer<CommonService>().Build())
 				{
 					automoqer
 						.Param<ISimpleService>()
@@ -92,7 +85,7 @@ namespace Automoqer.Test
 		[ExpectedException(typeof(ArgumentException))]
 		public void AutoMoqerShouldThrowCorrectExceptionWithUsingStatement()
 		{
-			using(var automoqer = new AutoMoqer<CommonService>())
+			using(var automoqer = new AutoMoqer<CommonService>().Build())
 			{
 				automoqer
 					.Param<ISimpleService>()

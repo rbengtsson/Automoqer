@@ -54,6 +54,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="AutoMoqerParameterExceptionTest.cs" />
     <Compile Include="AutoMoqerTest.cs" />
     <Compile Include="Model\CommonService.cs" />
     <Compile Include="Model\ServiceWithNoConstructorParameters.cs" />

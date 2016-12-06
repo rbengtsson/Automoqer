@@ -1,12 +1,7 @@
 Todo
 ----
 
-	* M - Unit tests
-		- with override-parameters
-
-	* M - Handle value types as service parameters (no mock!)
-	* M - Add override-parameters manually as constructor parameters (could be used for mapping or fakes)
-
+	* S - Make sure all exceptions are getting used
 	* S - Use xUnit instead of mstest
 
 	* C - Manage multiple constructors
