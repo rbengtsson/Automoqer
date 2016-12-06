@@ -1,5 +1,6 @@
 ﻿using System;
 using Automoqer.Test.Model;
+using Automoqer.Test.Model.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Automoqer.Test
@@ -23,6 +24,34 @@ namespace Automoqer.Test
             {
                 var val = automoqer.Service.GetVal();
                 Assert.AreEqual(7, val);
+            }
+        }
+
+        [TestMethod]
+        public void AutoMoqerCanConstructServiceWithReferenceTypeHasExceptionByName()
+        {
+            var myRef = new ReferenceTypeParameter();
+
+            using (var automoqer = new AutoMoqer<ServiceWithReferenceTypeParameter>()
+                .With("referenceTypeParameter", myRef)
+                .Build())
+            {
+                var val = automoqer.Service.ReferenceTypeParameter;
+                Assert.AreSame(myRef, val);
+            }
+        }
+
+        [TestMethod]
+        public void AutoMoqerCanConstructServiceWithReferenceTypeHasExceptionByType()
+        {
+            var myRef = new ReferenceTypeParameter();
+
+            using (var automoqer = new AutoMoqer<ServiceWithReferenceTypeParameter>()
+                .With<IReferenceTypeParameter>(myRef)
+                .Build())
+            {
+                var val = automoqer.Service.ReferenceTypeParameter;
+                Assert.AreSame(myRef, val);
             }
         }
 
