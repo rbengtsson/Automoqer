@@ -5,6 +5,10 @@ using System.Reflection;
 
 namespace Automoqer
 {
+    /// <summary>
+    /// AutoMoqer mocks all constructor dependencies for a service
+    /// </summary>
+    /// <typeparam name="TService">Type of the service to mock dependencies for</typeparam>
     public class AutoMoqer<TService> where TService : class
     {        
         private readonly ConstructorInfo _primaryConstructor;
