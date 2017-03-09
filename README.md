@@ -6,7 +6,7 @@ This repository contains a nuget package called "Automoqer": https://www.nuget.o
 The purpose of Automoqer is to ease the creation of services with constructor IoC in unit testing.
 
 
-## How to use ##
+## Basic usage ##
 
 1. Get Automoqer via NuGet: [![NuGet](https://img.shields.io/nuget/v/Automoqer.svg)](https://www.nuget.org/packages/Automoqer/)
 
@@ -26,7 +26,7 @@ using (var serviceMocker = new AutoMoqer<ServiceToCreate>().Build())
 }
 ```
 
-## Introduction ##
+## Why using Automocker ##
 
 If your services are defined like this:
 
@@ -99,6 +99,42 @@ public CreateNewCustomerSuccessfully()
 
 It also runs VerifyAll() on all Moq-objects in its Dispose-method (hence the IDisposable-pattern)
 
+
+## Advanced usage ##
+
+### Provide parameter instances ###
+
+You can make exceptions from having Automoqer automatically create Moq-objects from all constructor parameters. This is done by using one of the `.With` methods available on the AutoMoqer instance. Please note that these exceptions will not be available through the `.Param` method on the Automoqer-container.
+
+#### By parameter type ####
+
+This is how you provide your own instance of a parameter by it's type:
+
+```csharp
+var logger = new TestLogger();
+
+using (var serviceMocker = new AutoMoqer<CustomerService>()
+	.With<ILogger>(logger)
+	.Build())
+{
+	//...
+}
+```	
+
+#### By parameter name ####
+
+This is how you provide your own instance of a parameter by it's type:
+
+```csharp
+var logger = new TestLogger();
+
+using (var serviceMocker = new AutoMoqer<CustomerService>()
+	.With("logger", logger)
+	.Build())
+{
+	//...
+}			
+```
 
 
 # Contributors #

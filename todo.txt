@@ -1,8 +1,8 @@
 Todo
 ----
 
-	* S - Make sure all exceptions are getting used
 	* S - Use xUnit instead of mstest
+	* S - Make sure all exception parameters are getting used
 
 	* C - Manage multiple constructors
 	* C - Improve build process: https://github.com/smatsson/tusdotnet/blob/master/Tools/build_nuget.ps1
