@@ -10,7 +10,7 @@ The purpose of Automoqer is to ease the creation of services with constructor Io
 
 1. Get Automoqer via NuGet: [![NuGet](https://img.shields.io/nuget/v/Automoqer.svg)](https://www.nuget.org/packages/Automoqer/)
 
-2. In your unit test, create the Automoqer like this:
+2. In your unit test, create an Automoqer instance like this:
 
 ```csharp
 using (var serviceMocker = new AutoMoqer<ServiceToCreate>().Build())
@@ -26,7 +26,7 @@ using (var serviceMocker = new AutoMoqer<ServiceToCreate>().Build())
 }
 ```
 
-## Why using Automocker ##
+## Why using Automoqer ##
 
 If your services are defined like this:
 
