@@ -36,8 +36,15 @@ namespace Automoqer.Test
             Assert.IsNotNull(automoqer);
 
             //Assert parameter
-            var parameter = automoqer.Param<ISimpleService>();
-            Assert.IsNull(parameter);
+            try
+            {
+                automoqer.Param<ISimpleService>();
+                Assert.Fail("Should have thrown exception");
+            }
+            catch (Exception ex)
+            {
+                Assert.IsInstanceOfType(ex, typeof(ArgumentException));
+            }
 
             //Assert service
             Assert.IsNotNull(automoqer.Service);

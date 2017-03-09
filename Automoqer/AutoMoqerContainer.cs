@@ -7,6 +7,10 @@ using Moq;
 
 namespace Automoqer
 {
+    /// <summary>
+    /// A container for AutoMoqer that holds all constructor dependencies for a service
+    /// </summary>
+    /// <typeparam name="TService">Type of the service to mock dependencies for</typeparam>
     public class AutoMoqerContainer<TService> : IDisposable
     {
         private readonly List<object> _moqInstancesParameters = new List<object>();        
@@ -25,7 +29,7 @@ namespace Automoqer
                 var exceptionByType = exceptionParametersByType.ContainsKey(parameter.ParameterType);
                 var exceptionByName = exceptionParametersByName.ContainsKey(parameter.Name.ToLower());
                 if(exceptionByType && exceptionByName)
-                    throw new ArgumentException($"Parameter named {parameter.Name} has multiple registered exceptions (both by type and by name)");
+                    throw new ArgumentException($"Parameter named {parameter.Name} has multiple registered exceptions (by type and/or by name)");
 
                 if (exceptionByName)
                 {
@@ -51,6 +55,7 @@ namespace Automoqer
                 }
             }
 
+            //Create new service with mock parameter and provided parameters
             _serviceInstance = new Lazy<TService>(() => (TService)Activator.CreateInstance(typeof(TService), serviceConstructionParameters.Cast<object>().ToArray()));
         }
 
@@ -66,7 +71,7 @@ namespace Automoqer
 
             var param = _moqInstancesParameters.SingleOrDefault(p => p.GetType() == genericGenericType);
             if (param == null)
-                return null;
+                throw new ArgumentException($"Parameter with typ {typeof(TParam).Name} not found in constructor parameter mock list");
 
             return (Mock<TParam>)Convert.ChangeType(param, typeof(Mock<TParam>));
         }
@@ -82,11 +87,8 @@ namespace Automoqer
         public void Dispose()
         {
             var exceptionOccurred = Marshal.GetExceptionPointers() != IntPtr.Zero || Marshal.GetExceptionCode() != 0;
-
             if (exceptionOccurred)
-            {
                 return;
-            }
 
             foreach (var parameter in _moqInstancesParameters)
             {

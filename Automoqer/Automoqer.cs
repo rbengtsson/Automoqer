@@ -24,7 +24,7 @@ namespace Automoqer
             if(constructors.Length > 1)
                 throw new ArgumentException("Multiple public constructors found");
 
-            var primaryConstructor = constructors.SingleOrDefault();
+            var primaryConstructor = constructors.FirstOrDefault();
             if (primaryConstructor == null)
                 throw new ArgumentException("Could not find a public constructor");
 
@@ -40,7 +40,7 @@ namespace Automoqer
         public AutoMoqer<TService> With<TParam>(object instance)
         {
             if(_exceptionParametersByType.ContainsKey(typeof(TParam)))
-                throw new ArgumentException($"An instance for the parameter with type {typeof(TParam).Name} is already registered");
+                throw new ArgumentException($"An instance for the parameter with type {typeof(TParam).Name} has already been registered");
 
             _exceptionParametersByType.Add(typeof(TParam), instance);
             return this;
@@ -57,7 +57,7 @@ namespace Automoqer
             var nameLowerCase = name.ToLower();
 
             if (_exceptionParametersByName.ContainsKey(nameLowerCase))
-                throw new ArgumentException($"An instance for the parameter named {name} is already registered");
+                throw new ArgumentException($"An instance for the parameter named {name} has already been registered");
 
             _exceptionParametersByName.Add(nameLowerCase, instance);
             return this;
