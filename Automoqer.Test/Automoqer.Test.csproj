@@ -66,6 +66,7 @@
     <Compile Include="Model\ServiceWithNoPublicConstructor.cs" />
     <Compile Include="Model\ServiceWithValueTypeInConstructor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AutoMoqerContainerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Automoqer\Automoqer.csproj">

@@ -13,7 +13,7 @@ namespace Automoqer
     /// <typeparam name="TService">Type of the service to mock dependencies for</typeparam>
     public class AutoMoqerContainer<TService> : IDisposable
     {
-        private readonly List<object> _moqInstancesParameters = new List<object>();        
+        private readonly List<object> _moqInstancesParameters = new List<object>();
         private readonly Lazy<TService> _serviceInstance;
 
         internal AutoMoqerContainer(
@@ -40,7 +40,7 @@ namespace Automoqer
                     serviceConstructionParameters.Add(exceptionParametersByType.First(p => p.Key == parameter.ParameterType).Value);
                 }
                 else
-                {                    
+                {
                     if (parameter.ParameterType.IsValueType)
                         throw new ArgumentException($"Unable to create Moq-object for parameter named {parameter.Name} as Moq doesn't support value-types");
 
@@ -71,7 +71,7 @@ namespace Automoqer
 
             var param = _moqInstancesParameters.SingleOrDefault(p => p.GetType() == genericGenericType);
             if (param == null)
-                throw new ArgumentException($"Parameter with typ {typeof(TParam).Name} not found in constructor parameter mock list");
+                throw new ArgumentException($"Parameter with type {typeof(TParam).Name} not found in constructor parameter mock list");
 
             return (Mock<TParam>)Convert.ChangeType(param, typeof(Mock<TParam>));
         }
@@ -80,6 +80,14 @@ namespace Automoqer
         /// Instance to the service instance
         /// </summary>
         public TService Service => _serviceInstance.Value;
+
+        /// <summary>
+        /// Creates the service.
+        /// </summary>
+        public void CreateService()
+        {
+            var unused = _serviceInstance.Value;
+        }
 
         /// <summary>
         /// Will run VerifyAll on all Moq-parameters
