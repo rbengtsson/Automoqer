@@ -6,7 +6,7 @@ namespace Automoqer.Test
     public class AutoMoqerContainerTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void CreateServiceShouldCreateTheInstance()
         {
             // Arrange
             using (var autoMoqer = new AutoMoqer<Foo>()
