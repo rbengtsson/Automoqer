@@ -141,6 +141,7 @@ using (var serviceMocker = new AutoMoqer<CustomerService>()
 
  * Robert Bengtsson - https://github.com/rbengtsson
  * Stefan Matsson - https://github.com/smatsson
+ * Manuel Pfemeter - https://github.com/manne
 
 
 # License and usage
