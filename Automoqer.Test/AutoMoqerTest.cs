@@ -9,7 +9,7 @@ namespace Automoqer.Test
     [TestClass]
     public class AutoMoqerTest
     {
-        [TestMethod]        
+        [TestMethod]
         public void AutoMoqerCanBeCreatedWithNormalConstructorSuccessfullt()
         {
             var automoqer = new AutoMoqer<CommonService>().Build();
@@ -65,41 +65,60 @@ namespace Automoqer.Test
             var automoqer = new AutoMoqer<ServiceWithNoPublicConstructor>().Build();
         }
 
-		[TestMethod]
-		public void AutoMoqerThrowsExceptionOnDisposeForNonCalledMethods()
-		{
-			try
-			{
-				using(var automoqer = new AutoMoqer<CommonService>().Build())
-				{
-					automoqer
-						.Param<ISimpleService>()
-						.Setup(f => f.GetBool())
-						.Returns(true);
-				}
+        [TestMethod]
+        public void AutoMoqerThrowsExceptionOnDisposeForNonCalledMethods()
+        {
+            try
+            {
+                using(var automoqer = new AutoMoqer<CommonService>().Build())
+                {
+                    automoqer
+                        .Param<ISimpleService>()
+                        .Setup(f => f.GetBool())
+                        .Returns(true);
+                }
 
-				// Should not happen.
-				Assert.IsFalse(true);
-			}
-			catch(System.Reflection.TargetInvocationException exc)
-			{
-				// Moq.MockVerificationException is internal.
-				Assert.AreEqual("Moq.MockVerificationException", exc.InnerException.GetType().FullName);
-			}
-		}
+                // Should not happen.
+                Assert.IsFalse(true);
+            }
+            catch(System.Reflection.TargetInvocationException exc)
+            {
+                // Moq.MockVerificationException is internal.
+                Assert.AreEqual("Moq.MockVerificationException", exc.InnerException.GetType().FullName);
+            }
+        }
 
-		[TestMethod]
-		[ExpectedException(typeof(ArgumentException))]
-		public void AutoMoqerShouldThrowCorrectExceptionWithUsingStatement()
-		{
-			using(var automoqer = new AutoMoqer<CommonService>().Build())
-			{
-				automoqer
-					.Param<ISimpleService>()
-					.Setup(f => f.SetString(It.IsAny<string>()));
+        [TestMethod]
+        public void AutoMoqerWithExplicitVerificationCallThrowsExceptionForNonCalledMethods()
+        {
+            try
+            {
+                var automoqer = new AutoMoqer<CommonService>().BuildWithExplicitVerification();
+                automoqer
+                    .Param<ISimpleService>()
+                    .Setup(f => f.GetBool())
+                    .Returns(true);
+                automoqer.VerifyAll();
+            }
+            catch (System.Reflection.TargetInvocationException exc)
+            {
+                // Moq.MockVerificationException is internal.
+                Assert.AreEqual("Moq.MockVerificationException", exc.InnerException.GetType().FullName);
+            }
+        }
 
-				throw new ArgumentException();
-			}
-		}
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void AutoMoqerShouldThrowCorrectExceptionWithUsingStatement()
+        {
+            using(var automoqer = new AutoMoqer<CommonService>().Build())
+            {
+                automoqer
+                    .Param<ISimpleService>()
+                    .Setup(f => f.SetString(It.IsAny<string>()));
+
+                throw new ArgumentException();
+            }
+        }
     }
 }

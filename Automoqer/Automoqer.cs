@@ -10,7 +10,7 @@ namespace Automoqer
     /// </summary>
     /// <typeparam name="TService">Type of the service to mock dependencies for</typeparam>
     public class AutoMoqer<TService> where TService : class
-    {        
+    {
         private readonly ConstructorInfo _primaryConstructor;
         private readonly Dictionary<Type, object> _exceptionParametersByType = new Dictionary<Type, object>();
         private readonly Dictionary<string, object> _exceptionParametersByName = new Dictionary<string, object>();
@@ -64,9 +64,9 @@ namespace Automoqer
         }
 
         /// <summary>
-        /// Create a new AutoMoqer container with the current configuration
+        /// Create a new <see cref="AutoMoqer{TService}"/> container with the current configuration.
         /// </summary>
-        /// <returns>A new AutoMoqer container</returns>
+        /// <returns>A new <see cref="AutoMoqer{TService}"/> container</returns>
         public AutoMoqerContainer<TService> Build()
         {
             //Clone the lists to support the creation of multiple independent containers from the same AutoMoqer-object
@@ -74,6 +74,22 @@ namespace Automoqer
             var exceptionParametersByNameCopy = new Dictionary<string, object>(_exceptionParametersByName);
 
             return new AutoMoqerContainer<TService>(
+                _primaryConstructor,
+                exceptionParametersByTypeCopy,
+                exceptionParametersByNameCopy);
+        }
+
+        /// <summary>
+        /// Create a new <see cref="AutoMoqerContainerWithExplicitVerification{TService}"/> container with the current configuration.
+        /// </summary>
+        /// <returns>A new <see cref="AutoMoqerContainerWithExplicitVerification{TService}"/> container</returns>
+        public AutoMoqerContainerWithExplicitVerification<TService> BuildWithExplicitVerification()
+        {
+            //Clone the lists to support the creation of multiple independent containers from the same AutoMoqer-object
+            var exceptionParametersByTypeCopy = new Dictionary<Type, object>(_exceptionParametersByType);
+            var exceptionParametersByNameCopy = new Dictionary<string, object>(_exceptionParametersByName);
+
+            return new AutoMoqerContainerWithExplicitVerification<TService>(
                 _primaryConstructor,
                 exceptionParametersByTypeCopy,
                 exceptionParametersByNameCopy);
