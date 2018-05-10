@@ -1,4 +1,6 @@
-﻿using System;
+﻿#if NET46
+
+using System;
 using Automoqer.Test.Model;
 using Automoqer.Test.Model.Interfaces;
 using Moq;
@@ -122,3 +124,5 @@ namespace Automoqer.Test
         }
     }
 }
+
+#endif

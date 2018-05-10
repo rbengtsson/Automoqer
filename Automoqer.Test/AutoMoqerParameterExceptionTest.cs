@@ -1,4 +1,6 @@
-﻿using System;
+﻿#if NET46
+
+using System;
 using Automoqer.Test.Model;
 using Automoqer.Test.Model.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -107,3 +109,5 @@ namespace Automoqer.Test
         }
     }
 }
+
+#endif

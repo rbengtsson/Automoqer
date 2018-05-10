@@ -1,10 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net46</TargetFramework>
+    <TargetFrameworks>net46;netstandard1.3</TargetFrameworks>
     <IsTestProject>true</IsTestProject>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Moq" Version="4.5.0" Condition="'$(TargetFramework)' == 'net46'" />
+    <PackageReference Include="Moq" Version="4.7.0" Condition="'$(TargetFramework)' == 'netstandard1.3'" />
     <PackageReference Include="MSTest.TestAdapter" Version="1.2.1" />
     <PackageReference Include="MSTest.TestFramework" Version="1.2.1" />
   </ItemGroup>
