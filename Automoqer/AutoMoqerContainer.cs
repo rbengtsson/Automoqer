@@ -1,3 +1,5 @@
+#if NET46
+
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -33,3 +35,5 @@ namespace Automoqer
         }
     }
 }
+
+#endif

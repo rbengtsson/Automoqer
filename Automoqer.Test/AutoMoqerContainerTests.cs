@@ -1,4 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿#if NET46
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Automoqer.Test
 {
@@ -26,3 +28,5 @@ namespace Automoqer.Test
         }
     }
 }
+
+#endif
