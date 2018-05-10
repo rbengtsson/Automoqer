@@ -40,7 +40,7 @@ namespace Automoqer
                 }
                 else
                 {
-                    if (parameter.ParameterType.IsValueType)
+                    if (parameter.GetType().GetTypeInfo().IsValueType)
                         throw new ArgumentException($"Unable to create Moq-object for parameter named {parameter.Name} as Moq doesn't support value-types");
 
                     //Create and add Moq-instance for parameter

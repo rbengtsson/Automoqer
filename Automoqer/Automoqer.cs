@@ -63,6 +63,7 @@ namespace Automoqer
             return this;
         }
 
+#if NET46
         /// <summary>
         /// Create a new <see cref="AutoMoqer{TService}"/> container with the current configuration.
         /// </summary>
@@ -78,6 +79,7 @@ namespace Automoqer
                 exceptionParametersByTypeCopy,
                 exceptionParametersByNameCopy);
         }
+#endif
 
         /// <summary>
         /// Create a new <see cref="AutoMoqerContainerWithExplicitVerification{TService}"/> container with the current configuration.
