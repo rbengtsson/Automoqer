@@ -1,18 +1,23 @@
 <?xml version="1.0"?>
-<package >
+<package>
   <metadata>
-    <id>$id$</id>
+    <id>dariusz-wozniak.AutoMoqer</id>
     <version>$version$</version>
-    <title>$title$</title>
+    <title>dariusz-wozniak.AutoMoqer</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
-    <licenseUrl>https://github.com/rbengtsson/Automoqer/blob/master/LICENSE</licenseUrl>
-    <projectUrl>https://github.com/rbengtsson/Automoqer</projectUrl>    
+    <license type="file">LICENSE.txt</license>
+    <projectUrl>https://github.com/rbengtsson/Automoqer</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes></releaseNotes>
-    <copyright>Copyright 2018 Robert Bengtsson</copyright>
+    <releaseNotes/>
+    <copyright>Copyright 2021 Robert Bengtsson</copyright>
     <tags>Moq Mock UnitTest</tags>
-	<iconUrl>https://raw.githubusercontent.com/rbengtsson/Automoqer/master/nuget_icon.png</iconUrl>
+    <dependencies>
+      <group targetFramework=".NETFramework4.6"/>
+    </dependencies>
   </metadata>
+  <files>
+    <file src="LICENSE.txt" target=""/>
+  </files>
 </package>
