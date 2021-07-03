@@ -83,9 +83,8 @@ namespace Automoqer.Test
 			}
 			catch(System.Reflection.TargetInvocationException exc)
 			{
-				// Moq.MockVerificationException is internal.
-				Assert.AreEqual("Moq.MockVerificationException", exc.InnerException.GetType().FullName);
-			}
+                Assert.IsInstanceOfType(exc.InnerException, typeof(MockException));
+            }
 		}
 
 		[TestMethod]
