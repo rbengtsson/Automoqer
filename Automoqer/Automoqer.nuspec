@@ -11,7 +11,8 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes></releaseNotes>
-    <copyright>Copyright 2016 Robert Bengtsson</copyright>
+    <copyright>Copyright 2018 Robert Bengtsson</copyright>
     <tags>Moq Mock UnitTest</tags>
+	<iconUrl>https://raw.githubusercontent.com/rbengtsson/Automoqer/master/nuget_icon.png</iconUrl>
   </metadata>
 </package>
