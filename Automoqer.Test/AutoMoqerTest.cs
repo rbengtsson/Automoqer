@@ -88,6 +88,25 @@ namespace Automoqer.Test
         }
 
         [TestMethod]
+        public void AutoMoqerWithExplicitVerificationCallThrowsExceptionForNonCalledMethods()
+        {
+            try
+            {
+                var automoqer = new AutoMoqer<CommonService>().BuildWithExplicitVerification();
+                automoqer
+                    .Param<ISimpleService>()
+                    .Setup(f => f.GetBool())
+                    .Returns(true);
+                automoqer.VerifyAll();
+            }
+            catch (System.Reflection.TargetInvocationException exc)
+            {
+                // Moq.MockVerificationException is internal.
+                Assert.AreEqual("Moq.MockVerificationException", exc.InnerException.GetType().FullName);
+            }
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void AutoMoqerShouldThrowCorrectExceptionWithUsingStatement()
         {

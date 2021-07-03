@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 <<<<<<< HEAD
 [assembly: AssemblyTitle("dariusz-wozniak-Automoqer")]
-[assembly: AssemblyDescription("Automatically creates services for unit testing with constructor parameters as Moq-objects. Docs and info are available on the project's github site.")]
+[assembly: AssemblyDescription("Automatically creates services for unit testing with constructor parameters as Moq-objects. Docs and info are available on the project's github site https://github.com/rbengtsson/Automoqer")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Robert Bengtsson")]
 [assembly: AssemblyProduct("dariusz-wozniak-Automoqer")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCompany("Robert Bengtsson")]
 [assembly: AssemblyProduct("Automoqer")]
 [assembly: AssemblyCopyright("Copyright © Robert Bengtsson 2018")]
->>>>>>> upstream/master
+>>>>>>> 0b18345a8a0e4e806e37954bb9595981431af3e3
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -47,4 +47,4 @@ using System.Runtime.InteropServices;
 =======
 [assembly: AssemblyVersion("1.2.0.0")]
 [assembly: AssemblyFileVersion("1.2.0.0")]
->>>>>>> upstream/master
+>>>>>>> 0b18345a8a0e4e806e37954bb9595981431af3e3
