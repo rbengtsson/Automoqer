@@ -9,7 +9,7 @@ namespace Automoqer.Test
     [TestClass]
     public class AutoMoqerTest
     {
-        [TestMethod]        
+        [TestMethod]
         public void AutoMoqerCanBeCreatedWithNormalConstructorSuccessfullt()
         {
             var automoqer = new AutoMoqer<CommonService>().Build();
@@ -65,40 +65,40 @@ namespace Automoqer.Test
             var automoqer = new AutoMoqer<ServiceWithNoPublicConstructor>().Build();
         }
 
-		[TestMethod]
-		public void AutoMoqerThrowsExceptionOnDisposeForNonCalledMethods()
-		{
-			try
-			{
-				using(var automoqer = new AutoMoqer<CommonService>().Build())
-				{
-					automoqer
-						.Param<ISimpleService>()
-						.Setup(f => f.GetBool())
-						.Returns(true);
-				}
+        [TestMethod]
+        public void AutoMoqerThrowsExceptionOnDisposeForNonCalledMethods()
+        {
+            try
+            {
+                using(var automoqer = new AutoMoqer<CommonService>().Build())
+                {
+                    automoqer
+                        .Param<ISimpleService>()
+                        .Setup(f => f.GetBool())
+                        .Returns(true);
+                }
 
-				// Should not happen.
-				Assert.IsFalse(true);
-			}
-			catch(System.Reflection.TargetInvocationException exc)
-			{
+                // Should not happen.
+                Assert.IsFalse(true);
+            }
+            catch(System.Reflection.TargetInvocationException exc)
+            {
                 Assert.IsInstanceOfType(exc.InnerException, typeof(MockException));
             }
-		}
+        }
 
-		[TestMethod]
-		[ExpectedException(typeof(ArgumentException))]
-		public void AutoMoqerShouldThrowCorrectExceptionWithUsingStatement()
-		{
-			using(var automoqer = new AutoMoqer<CommonService>().Build())
-			{
-				automoqer
-					.Param<ISimpleService>()
-					.Setup(f => f.SetString(It.IsAny<string>()));
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void AutoMoqerShouldThrowCorrectExceptionWithUsingStatement()
+        {
+            using(var automoqer = new AutoMoqer<CommonService>().Build())
+            {
+                automoqer
+                    .Param<ISimpleService>()
+                    .Setup(f => f.SetString(It.IsAny<string>()));
 
-				throw new ArgumentException();
-			}
-		}
+                throw new ArgumentException();
+            }
+        }
     }
 }
