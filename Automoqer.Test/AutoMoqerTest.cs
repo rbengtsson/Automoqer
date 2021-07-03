@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Automoqer.Test.Model;
 using Automoqer.Test.Model.Interfaces;
 using Moq;

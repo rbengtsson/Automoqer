@@ -3,7 +3,7 @@
     public class ServiceWithNoPublicConstructor
     {
         private ServiceWithNoPublicConstructor()
-        {            
+        {
         }
     }
 }

@@ -55,6 +55,8 @@
   <ItemGroup>
     <Compile Include="AutoMoqer.cs" />
     <Compile Include="AutoMoqerContainer.cs" />
+    <Compile Include="AutoMoqerContainerBase.cs" />
+    <Compile Include="AutoMoqerContainerWithExplicitVerification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
