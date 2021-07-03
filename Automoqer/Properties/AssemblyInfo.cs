@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Automoqer")]
+[assembly: AssemblyTitle("dariusz-wozniak-Automoqer")]
 [assembly: AssemblyDescription("Automatically creates services for unit testing with constructor parameters as Moq-objects. Docs and info are available on the project's github site.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Robert Bengtsson")]
-[assembly: AssemblyProduct("Automoqer")]
-[assembly: AssemblyCopyright("Copyright © Robert Bengtsson 2016")]
+[assembly: AssemblyProduct("dariusz-wozniak-Automoqer")]
+[assembly: AssemblyCopyright("Copyright © Robert Bengtsson 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("e642c604-bcad-4659-9858-dc68f525af77")]
+[assembly: Guid("8beac339-97e8-4848-b19f-5362e41dee37")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.1.0.2")]
-[assembly: AssemblyFileVersion("1.1.0.2")]
+[assembly: AssemblyVersion("1.3.0.0")]
+[assembly: AssemblyFileVersion("1.3.0.0")]
