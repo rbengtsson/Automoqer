@@ -77,6 +77,15 @@ namespace Automoqer.Test
                         .Setup(f => f.GetBool())
                         .Returns(true);
                 }
+<<<<<<< HEAD
+
+                // Should not happen.
+                Assert.IsFalse(true);
+            }
+            catch(System.Reflection.TargetInvocationException exc)
+            {
+                Assert.IsInstanceOfType(exc.InnerException, typeof(MockException));
+=======
 
                 // Should not happen.
                 Assert.IsFalse(true);
@@ -88,16 +97,6 @@ namespace Automoqer.Test
             }
         }
 
-<<<<<<< HEAD
-				// Should not happen.
-				Assert.IsFalse(true);
-			}
-			catch(System.Reflection.TargetInvocationException exc)
-			{
-                Assert.IsInstanceOfType(exc.InnerException, typeof(MockException));
-            }
-		}
-=======
         [TestMethod]
         public void AutoMoqerWithExplicitVerificationCallThrowsExceptionForNonCalledMethods()
         {
@@ -114,9 +113,9 @@ namespace Automoqer.Test
             {
                 // Moq.MockVerificationException is internal.
                 Assert.AreEqual("Moq.MockVerificationException", exc.InnerException.GetType().FullName);
+>>>>>>> 0b18345a8a0e4e806e37954bb9595981431af3e3
             }
         }
->>>>>>> upstream/master
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
